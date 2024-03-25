@@ -26,3 +26,6 @@ If you want to implement full project you'll need the Dockerfile & application.y
 First create 'docker' folder in your main project, and create a file with name 'Dockerfile' like on this pic:
 
 ![docker_creation](https://github.com/Yaroslav1911/ToDoBot_tg-bot/assets/145599115/8b545250-eedd-4059-980e-07379cd65115)
+
+Then put this code in Docker file with yours creddentials:
+
