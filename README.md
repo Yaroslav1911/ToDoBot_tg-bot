@@ -35,6 +35,42 @@ Second, create 'application.yaml' file in resources:
 
 ![application_creation](https://github.com/Yaroslav1911/ToDoBot_tg-bot/assets/145599115/efc4c9e5-f567-497f-837a-72fb5788299e)
 
+
+And put this code with yours creddentials:
+
 ```
-And put this code 
+server:
+  port: 8082
+
+bot:
+  name: your_botUsernanme
+  token: your_botToken
+
+#db settings
+spring:
+
+  message:
+    encoding: UTF-8
+
+  jooq:
+    sql-dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  jpa:
+    show-sql: true
+    hibernate:
+      dll-auto: validate
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/your_database_name_from_dockerfile
+    username: your_username_from_dockerfile
+    password: your_password_from_dockerfile
+
+  flyway:
+    url: jdbc:postgresql://localhost:5432/your_database_name_from_dockerfile?ssl=false
+    user: your_username_from_dockerfile
+    password: your_password_from_dockerfile
+    schemas:
+      - "public"
+    locations:
+      - classpath:/migrations/
 ```
