@@ -35,6 +35,6 @@ Second, create 'application.yaml' file in resources:
 
 ![application_creation](https://github.com/Yaroslav1911/ToDoBot_tg-bot/assets/145599115/efc4c9e5-f567-497f-837a-72fb5788299e)
 
-'''
+```
 And put this code 
-'''
+```
