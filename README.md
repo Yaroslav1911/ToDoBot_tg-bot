@@ -23,5 +23,6 @@ With localization in two languages, English and Ukrainian.
 
 If you want to implement full project you'll need the Dockerfile & application.yaml.
 
-First create 'docker' folder in your main project:
+First create 'docker' folder in your main project, and create a file with name 'Dockerfile' like on this pic:
+
 ![docker_creation](https://github.com/Yaroslav1911/ToDoBot_tg-bot/assets/145599115/8b545250-eedd-4059-980e-07379cd65115)
