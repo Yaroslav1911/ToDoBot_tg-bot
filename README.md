@@ -16,7 +16,11 @@ I used this list of 'tools':
   - JPA
   - flywaydb
   - Docker
-With localization in two languages, English and Ukrainian.
+
+    
+With localization in two languages: 
+  - Eglish
+  - Ukrainian
 
 
 
@@ -38,7 +42,7 @@ Second, create 'application.yaml' file in resources:
 
 And put this code with yours creddentials:
 
-```
+```java
 server:
   port: 8082
 
