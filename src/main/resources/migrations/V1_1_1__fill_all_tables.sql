@@ -1,0 +1,5 @@
+--insert into users(user_id, user_name, first_name, last_name) values
+--(154314316545, 'lolKek', 'kek', 'lol');
+--
+--insert into goals(goal_name, goal_description, goal_deadline, goal_reminder, user_name) values
+--('insert test', 'learn how to insert', '2024-02-02 22:46:00', '2024-02-03 22:46:00', 'Koka-pepi');

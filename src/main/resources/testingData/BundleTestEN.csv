@@ -1,0 +1,6 @@
+Command,ExpectedText
+AGD_writeDescription,Write some description of a goal
+noGoals,You don't have any goals
+enterName,Enter name of a goal with English letters please
+AGDl_someError,"To enter deadline, please create a new goal"
+SGD_someError,Why did you write this?
