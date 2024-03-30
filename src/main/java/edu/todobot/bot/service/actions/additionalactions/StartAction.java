@@ -39,6 +39,7 @@ public class StartAction implements Actions, Configurations {
         SendMessage sendMessage = ActionsUtils.addMainButtons(msg.getChatId());
         sendMessage.setChatId(chatId);
         sendMessage.setText(getBundle("welcome"));
+        usersService.setUsersChatState(String.valueOf(ChatState.CALM), chatId);
         return sendMessage;
     }
 }

@@ -40,8 +40,8 @@ public class ChangeGoalDescription implements RequestActions, Configurations {
 
         var newDescription = msg.getText();
         goalsService.updateGoalDescription(newDescription, ActionsUtils.goalID);
-        var goal = goalsService.getGoalByGoalId(ActionsUtils.goalID);
-        String out = ActionsUtils.getStringTextOfGoal(goal);
+        var goal = goalsService.findById(ActionsUtils.goalID);
+        String out = ActionsUtils.getStringTextOfGoalToChange(goal);
 
         return new SendMessage(chatId.toString(), getBundle("CND_descriptionChanged") + out);
     }

@@ -24,12 +24,25 @@ public class ActionsUtils {
     private static String bundle(String key) {
         return BotConfig.bundle.getString(key);
     }
-    public static String getStringTextOfGoal(GoalsDto goal) {
+    public static String getStringTextOfGoalToChange(GoalsDto goal) {
         return String.format(bundle("stringFormatToChange"),
                 goal.goalName(),
                 goal.goalDescription(),
-                goal.goalDeadline(),
-                goal.goalReminder());
+                replaceT(goal.goalDeadline()),
+                replaceT(goal.goalReminder()));
+    }
+    public static String getStringTextOfGoal(GoalsDto goal) {
+        return String.format(bundle("GE_toString"),
+                goal.goalName(),
+                goal.goalDescription(),
+                replaceT(goal.goalDeadline()),
+                replaceT(goal.goalReminder()));
+    }
+    private static String replaceT (LocalDateTime goalReminder) {
+        if (goalReminder == null) {
+            return "null";
+        }
+        return goalReminder.toString().replace("T", " ");
     }
     public static String getStringFromMapOfGoal() {
         return String.format(bundle("stringFormatGoalAdded"),

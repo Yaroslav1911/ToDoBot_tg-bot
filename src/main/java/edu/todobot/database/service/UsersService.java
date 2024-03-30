@@ -18,11 +18,7 @@ public class UsersService {
     }
     @Transactional
     public String getUserLanguage(long chatId){
-        if (usersRepository.findById(chatId).isPresent()) {
-            return usersRepository.getReferenceById(chatId).getLang();
-        } else {
-            return "null";
-        }
+        return usersRepository.getReferenceById(chatId).getLang();
     }
     @Transactional
     public String getUsersChatState(long chatId) {

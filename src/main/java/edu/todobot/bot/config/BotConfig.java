@@ -5,7 +5,6 @@ import edu.todobot.bot.data.LocaleData;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.util.*;
@@ -15,7 +14,6 @@ import java.util.stream.Stream;
 @EnableScheduling
 @Configuration
 @Data
-@PropertySource("application.yaml")
 public class BotConfig {
     public static ChatState chatState;
     public static Map<String, String> bindingBy = new ConcurrentHashMap<>();

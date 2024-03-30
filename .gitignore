@@ -11,3 +11,4 @@ target/
 *.ipr
 docker/Dockerfile
 src/main/resources/application.yaml
+/src/test/java/edu/todobot/database/service/DatabaseCredentials.java

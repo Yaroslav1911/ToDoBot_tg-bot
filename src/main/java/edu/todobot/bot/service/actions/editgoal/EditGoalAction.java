@@ -54,9 +54,9 @@ public class EditGoalAction implements RequestActions, Configurations {
 
         usersService.setUsersChatState(String.valueOf(ChatState.GOAL_EDITING), chatId);
         String goalName = msg.getText().replaceAll("/", "");
-        var goal = goalsService.getGoalByGoalName(goalName);
+        var goal = goalsService.findByGoalName(goalName);
         ActionsUtils.goalID = goal.id();
-        String out = ActionsUtils.getStringTextOfGoal(goal);
+        String out = ActionsUtils.getStringTextOfGoalToChange(goal);
         SendMessage sendMessage = ActionsUtils.addEditGoalDataButtons(chatId);
         sendMessage.setChatId(chatId);
         sendMessage.setText(out);

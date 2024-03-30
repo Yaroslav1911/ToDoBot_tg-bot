@@ -4,7 +4,6 @@ import edu.todobot.bot.config.Configurations;
 import edu.todobot.bot.data.ChatState;
 import edu.todobot.bot.service.actions.interfaces.Actions;
 import edu.todobot.bot.utils.ActionsUtils;
-import edu.todobot.database.dto.GoalsDto;
 import edu.todobot.database.service.GoalsService;
 import edu.todobot.database.service.UsersService;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +11,6 @@ import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -38,13 +36,9 @@ public class ViewGoalsAction implements Actions, Configurations {
             return sendMessage;
         } else {
             var goals = goalsService.findAllGoalsByUserId(chatId);
-            List<GoalsDto> list = new ArrayList<>(goals);
-            String out = list.toString()
-                    .replace("[", "")
-                    .replace("]", "")
-                    .replace(",","");
+            List<String> out = goals.stream().map(ActionsUtils::getStringTextOfGoal).toList();
 
-            return new SendMessage(chatId.toString(), out);
+            return new SendMessage(chatId.toString(), out.toString().replaceAll("[\\[\\],]", ""));
         }
     }
 }

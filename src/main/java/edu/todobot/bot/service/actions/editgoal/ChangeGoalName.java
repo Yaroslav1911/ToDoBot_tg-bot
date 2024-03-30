@@ -43,8 +43,8 @@ public class ChangeGoalName implements RequestActions, Configurations {
 
         var newName = msg.getText().replaceAll("\\W", "_");
         goalsService.updateGoalName(newName, ActionsUtils.goalID);
-        var goal = goalsService.getGoalByGoalId(ActionsUtils.goalID);
-        String out = ActionsUtils.getStringTextOfGoal(goal);
+        var goal = goalsService.findById(ActionsUtils.goalID);
+        String out = ActionsUtils.getStringTextOfGoalToChange(goal);
 
         return new SendMessage(chatId.toString(), getBundle("CHN_nameChanged") + out);
     }

@@ -1,6 +1,5 @@
 package edu.todobot.database.entities;
 
-import edu.todobot.bot.config.BotConfig;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,7 +34,7 @@ public class GoalsEntity {
     @Column(name = "goal_reminder")
     private LocalDateTime goalReminder;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     @BatchSize(size = 20)
     private UsersEntity user;
@@ -58,7 +57,13 @@ public class GoalsEntity {
 
     @Override
     public String toString() {
-        return String.format(BotConfig.bundle.getString("GE_toString"),
-                goalName, goalDescription, goalDeadline, goalReminder);
+        return "GoalsEntity{" +
+                "id=" + id +
+                ", goalName='" + goalName + '\'' +
+                ", goalDescription='" + goalDescription + '\'' +
+                ", goalDeadline=" + goalDeadline +
+                ", goalReminder=" + goalReminder +
+                ", user=" + user +
+                '}';
     }
 }

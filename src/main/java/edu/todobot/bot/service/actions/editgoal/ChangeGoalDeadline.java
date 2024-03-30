@@ -43,8 +43,8 @@ public class ChangeGoalDeadline implements RequestActions, Configurations {
 
             usersService.setUsersChatState(String.valueOf(ChatState.GOAL_EDITING), chatId);
             goalsService.updateGoalDeadline(newDeadline, ActionsUtils.goalID);
-            var goal = goalsService.getGoalByGoalId(ActionsUtils.goalID);
-            String out = ActionsUtils.getStringTextOfGoal(goal);
+            var goal = goalsService.findById(ActionsUtils.goalID);
+            String out = ActionsUtils.getStringTextOfGoalToChange(goal);
 
             return new SendMessage(chatId.toString(), getBundle("CGDl_deadlineChanged") + out);
         } catch (Exception e) {

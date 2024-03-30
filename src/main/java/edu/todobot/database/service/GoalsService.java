@@ -22,42 +22,30 @@ public class GoalsService {
                 .map(goalsMapper::toDto).toList();
     }
     public List<GoalsDto> findAllGoalsByUserId(long chatId) {
-        return goalsRepository.findAll().stream()
-                .map(goalsMapper::toDto)
-                .filter(g -> g.user().getId().equals(chatId))
-                .toList();
+        return goalsRepository.findAllByUserId(chatId).stream()
+                .map(goalsMapper::toDto).toList();
     }
     public boolean isGoalExistsByGoalName(String goalName){
-        return goalsRepository.findAll().stream()
-                .map(goalsMapper::toDto)
-                .anyMatch(g -> g.goalName().equals(goalName));
+        return goalsRepository.existsByGoalName(goalName);
     }
     public long getUserIdByReminder(LocalDateTime ldt){
-        return goalsRepository.findAll().stream()
-                .map(goalsMapper::toDto)
-                .filter(g -> g.goalReminder() != null)
-                .filter(g -> g.goalReminder().equals(ldt))
-                .toList().get(0).user().getId();
+        return goalsMapper.toDto(goalsRepository.getByGoalReminder(ldt)).user().getId();
     }
-    public GoalsDto getGoalByGoalName(String goalName){
-        return goalsRepository.findAll().stream()
-                .map(goalsMapper::toDto)
-                .filter(g -> g.goalName().equals(goalName))
-                .toList().get(0);
+    public GoalsDto findByGoalName(String goalName){
+        return goalsMapper.toDto(goalsRepository.findByGoalName(goalName));
     }
-    public List<String> getAllGoalsNames(Long chatId) {
-        return goalsRepository.findAll().stream()
-                .map(goalsMapper::toDto)
-                .filter(g -> g.user().getId().equals(chatId))
-                .map(GoalsDto::goalName).toList();
+    public List<String> getAllGoalsNames(long chatId) {
+        return goalsRepository.findAllGoalNamesByUserId(chatId).stream()
+                .map(GoalsEntity::getGoalName)
+                .toList();
     }
-    public GoalsDto getGoalByGoalId(UUID goalId){
-        return goalsRepository.findById(goalId).stream()
-                .map(goalsMapper::toDto).toList().get(0);
+    public GoalsDto findById(UUID goalId){
+        return goalsRepository.findById(goalId).map(goalsMapper::toDto).orElse(null);
     }
     @Transactional
     public void deleteGoalById(UUID goalId){
         goalsRepository.deleteById(goalId);
+        goalsRepository.flush();
     }
     @Transactional
     public void saveAndFlush(GoalsEntity goal){

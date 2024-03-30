@@ -44,8 +44,8 @@ public class ChangeGoalReminder implements RequestActions, Configurations {
 
             usersService.setUsersChatState(String.valueOf(ChatState.GOAL_EDITING), chatId);
             goalsService.updateGoalReminder(newReminder, ActionsUtils.goalID);
-            var goal = goalsService.getGoalByGoalId(ActionsUtils.goalID);
-            String out = ActionsUtils.getStringTextOfGoal(goal);
+            var goal = goalsService.findById(ActionsUtils.goalID);
+            String out = ActionsUtils.getStringTextOfGoalToChange(goal);
 
             return new SendMessage(chatId.toString(), getBundle("CGR_reminderChanged") + out);
         } catch (Exception e) {

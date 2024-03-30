@@ -42,7 +42,7 @@ Second, create 'application.yaml' file in resources:
 
 And put this code with yours creddentials:
 
-```java
+```yaml
 server:
   port: 8082
 

@@ -1,15 +1,16 @@
 package edu.todobot.database.entities;
 
-import edu.todobot.bot.config.BotConfig;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.BatchSize;
 
 import java.util.Set;
 
 @Data
+@EqualsAndHashCode(exclude = "goals")
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -49,7 +50,14 @@ public class UsersEntity {
 
     @Override
     public String toString() {
-        return String.format(BotConfig.bundle.getString("UE_toString"),
-                userName, id, firstName, lastName);
+        return "UsersEntity{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", lang='" + lang + '\'' +
+                ", chatState='" + chatState + '\'' +
+                ", goals=" + goals +
+                '}';
     }
 }

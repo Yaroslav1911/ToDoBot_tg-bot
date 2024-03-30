@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class GoalsMapper {
-
     public GoalsDto toDto(GoalsEntity goalsEntity) {
         return GoalsDto.builder()
                 .id(goalsEntity.getId())
